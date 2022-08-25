@@ -13,7 +13,8 @@ public class Test3 {
         //Person person = new Person(pet);
         Person person = context.getBean("myPerson", Person.class);
         person.callYourPet();
-
+        System.out.println(person.getAge());
+        System.out.println(person.getLastName());
         context.close();
     }
 }
