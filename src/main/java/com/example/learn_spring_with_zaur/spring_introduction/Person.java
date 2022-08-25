@@ -7,8 +7,17 @@ public class Person {
         this.pet = pet;
     }
 
+    public Person(){
+
+    }
+
     public void callYourPet(){
         System.out.println("Hello, my pet");
         pet.say();
+    }
+
+    public void setPet(Pet pet){
+        System.out.println("Class Person: set pet");
+        this.pet = pet;
     }
 }
