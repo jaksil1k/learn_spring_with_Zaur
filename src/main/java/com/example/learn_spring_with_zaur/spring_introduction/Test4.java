@@ -7,13 +7,13 @@ public class Test4 {
         ClassPathXmlApplicationContext context = new
                 ClassPathXmlApplicationContext("applicationContext2.xml");
 
-        Dog myDog = context.getBean("myPet", Dog.class);
-        myDog.setName("Belka");
-        Dog yourDog = context.getBean("myPet", Dog.class);
-        yourDog.setName("Strelka");
-
-        System.out.println(myDog.getName());
-        System.out.println(yourDog.getName());
+//        Dog myDog = context.getBean("myPet", Dog.class);
+//        myDog.setName("Belka");
+//        Dog yourDog = context.getBean("myPet", Dog.class);
+//        yourDog.setName("Strelka");
+//
+//        System.out.println(myDog.getName());
+//        System.out.println(yourDog.getName());
         // when scope of bean is singleton the answer will be: Strelka Strelka
         //when scope is prototype, the answer will be: Belka Strelka
         /*

@@ -1,18 +1,25 @@
 package com.example.learn_spring_with_zaur.spring_introduction;
 
 public class Dog implements Pet{
-    private String name;
+//    private String name;
 
     @Override
     public void say(){
         System.out.println("Bow-Wow");
     }
 
-    public String getName() {
-        return name;
+    public void init(){
+        System.out.println("Class Dog: init method");
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void destroy(){
+        System.out.println("Class Dog: destroy method");
     }
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 }
