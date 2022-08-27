@@ -1,17 +1,20 @@
 package com.example.learn_spring_with_zaur.spring_introduction;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("personBean")
 public class Person {
     private Pet pet;
     private String lastName;
     private int age;
 
+    @Autowired
     public Person(Pet pet) {
+        System.out.println("Person has been created");
         this.pet = pet;
     }
 
-    public Person(){
-
-    }
 
     public void callYourPet(){
         System.out.println("Hello, my pet");
