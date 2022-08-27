@@ -8,6 +8,8 @@ public class ConfigWithAnnotations {
 
         Person person = context.getBean("personBean", Person.class);
         person.callYourPet();
+        System.out.println(person.getLastName());
+        System.out.println(person.getAge());
 
 //        Cat myCat = context.getBean("catBean", Cat.class);
 //        myCat.say();
