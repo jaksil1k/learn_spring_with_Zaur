@@ -1,6 +1,10 @@
 package com.example.learn_spring_with_zaur.spring_introduction;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 @Component("dogBean")
 public class Dog implements Pet{
@@ -11,10 +15,12 @@ public class Dog implements Pet{
         System.out.println("Bow-Wow");
     }
 
+    @PostConstruct
     public void init(){
         System.out.println("Class Dog: init method");
     }
 
+    @PreDestroy
     public void destroy(){
         System.out.println("Class Dog: destroy method");
     }
