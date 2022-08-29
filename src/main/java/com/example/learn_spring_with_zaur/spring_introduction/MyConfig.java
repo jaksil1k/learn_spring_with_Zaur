@@ -1,12 +1,9 @@
 package com.example.learn_spring_with_zaur.spring_introduction;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 @Configuration
-//@ComponentScan("com.example.learn_spring_with_zaur.spring_introduction")
+@PropertySource("classpath:myApp.properties")
 public class MyConfig {
 
     @Bean
@@ -19,6 +16,7 @@ public class MyConfig {
     public Person personBean(){
         return new Person(catBean());
     }
+
 
 
 }
