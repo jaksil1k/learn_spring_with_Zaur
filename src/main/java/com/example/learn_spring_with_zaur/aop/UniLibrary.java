@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 public class UniLibrary extends AbstractLibrary {
 
 
-    public void getBook(Book book){
-        System.out.println("We take book from university " + book.getName());
+    public void getBook(){
+        System.out.println("We take book from university");
     }
 
 //    String returnBook(){
