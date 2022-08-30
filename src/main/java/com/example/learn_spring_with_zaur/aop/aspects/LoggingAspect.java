@@ -3,25 +3,26 @@ package com.example.learn_spring_with_zaur.aop.aspects;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class LoggingAndSecurityAspect {
+@Order(10)
+public class LoggingAspect {
 
-    @Pointcut("execution(* com.example.learn_spring_with_zaur.aop.UniLibrary.*(..))")
-    private void allMethodsFromUniLibrary() {}
-
-    @Pointcut("execution(* com.example.learn_spring_with_zaur.aop.UniLibrary.retrurn*())")
-    private void allReturnMethodsFromUniLibrary() {}
-
-    @Pointcut("allMethodsFromUniLibrary() && !allReturnMethodsFromUniLibrary()")
-    private void allMethodsExceptReturnFromUniLibrary() {}
-
-    @Before("allMethodsExceptReturnFromUniLibrary()")
-    public void BeforeAllLoggingExceptReturnAdvice() {
-        System.out.println("BeforeAllLoggingExceptReturnAdvice Log #2");
-    }
+//    @Pointcut("execution(* com.example.learn_spring_with_zaur.aop.UniLibrary.*(..))")
+//    public void allMethodsFromUniLibrary() {}
+//    @Pointcut("execution(* com.example.learn_spring_with_zaur.aop.UniLibrary.retrurn*())")
+//    private void allReturnMethodsFromUniLibrary() {}
+//
+//    @Pointcut("allMethodsFromUniLibrary() && !allReturnMethodsFromUniLibrary()")
+//    private void allMethodsExceptReturnFromUniLibrary() {}
+//
+//    @Before("allMethodsExceptReturnFromUniLibrary()")
+//    public void BeforeAllLoggingExceptReturnAdvice() {
+//        System.out.println("BeforeAllLoggingExceptReturnAdvice Log #2");
+//    }
 
 //    @Pointcut("execution(* com.example.learn_spring_with_zaur.aop.UniLibrary.get*())")
 //    private void allGetMethodsFromUniLibrary() {}
@@ -62,16 +63,9 @@ public class LoggingAndSecurityAspect {
 //        System.out.println("beforeReturnLoggingAdvice: writing Log #2");
 //    }
 
-//    @Pointcut("execution(* get*())")
-//    private void allGetMethods(){}
-//
-//    @Before("allGetMethods()")
-//    public void beforeGetLoggingAdvice(){
-//        System.out.println("beforeGetBookAdvice: try to get book/magazine");
-//    }
-//
-//    @Before("allGetMethods()")
-//    public void beforeGetSecurityAdvice(){
-//        System.out.println("beforeSecurityAdvice: check rights to get book/magazine ");
-//    }
+    @Before("com.example.learn_spring_with_zaur.aop.aspects.MyPointcuts.allGetMethods()")
+    public void beforeGetLoggingAdvice(){
+        System.out.println("beforeGetBookAdvice:logging and try to get book/magazine");
+    }
+
 }
