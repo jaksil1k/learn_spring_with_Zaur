@@ -1,8 +1,11 @@
 package com.example.learn_spring_with_zaur.aop.aspects;
 
+import com.example.learn_spring_with_zaur.aop.Book;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -63,9 +66,32 @@ public class LoggingAspect {
 //        System.out.println("beforeReturnLoggingAdvice: writing Log #2");
 //    }
 
-    @Before("com.example.learn_spring_with_zaur.aop.aspects.MyPointcuts.allGetMethods()")
-    public void beforeGetLoggingAdvice(){
+    @Before("com.example.learn_spring_with_zaur.aop.aspects.MyPointcuts.allAddMethods()")
+    public void beforeAddLoggingAdvice(JoinPoint joinPoint){
+
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        System.out.println("methodSignature = " + methodSignature);
+        System.out.println("methodSignature.getMethod = " + methodSignature.getMethod());
+        System.out.println("methodSignature.getReturnType = " + methodSignature.getReturnType());
+        System.out.println("methodSignature.getName = " + methodSignature.getName());
+
+
+        if (methodSignature.getName().equals("addBook")){
+            Object[] arguments = joinPoint.getArgs();
+            for (Object i : arguments){
+                if (i instanceof Book){
+                    Book myBook = (Book) i;
+                    System.out.println("Information about book: Name of book - " + myBook.getName() + ", author - " + myBook.getAuthor()
+                    + ", yearOfPublication - " + myBook.getYearOfPublication());
+                }
+                if (i instanceof String){
+                    System.out.println(i + " added book to library");
+                }
+            }
+        }
+
         System.out.println("beforeGetBookAdvice:logging and try to get book/magazine");
+        System.out.println("-------------------------------------");
     }
 
 }
