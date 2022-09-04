@@ -2,6 +2,7 @@ package com.example.learn_spring_with_zaur.aop.aspects;
 
 import com.example.learn_spring_with_zaur.aop.Student;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -29,10 +30,15 @@ public class UniversityLoggingAspect {
 
         firstStudent.setGPA(4.0);
 
-
-
         System.out.println("afterReturningGetStudentsLoggingAdvice: logging getting "+
                 "list of students after ending getStudents method");
+    }
+
+    @AfterThrowing(pointcut = "execution(* getStudents())",
+                    throwing = "exception")
+    public void afterThrowingGetStudentLoggingAdvice(Throwable exception) {
+        System.out.println("afterThrowingGetStudentLoggingAdvice: logging throw"+
+                "exception " + exception);
     }
 
 }
