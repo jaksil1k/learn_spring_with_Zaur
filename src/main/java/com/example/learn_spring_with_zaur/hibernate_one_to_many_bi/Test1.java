@@ -20,12 +20,14 @@ public class Test1 {
         try {
 
 //            session = factory.getCurrentSession();
-//            Department department = new Department("IT", 1200, 300);
+//            Department department = new Department("Sales", 1500, 800);
 //            Employee emp1 = new Employee("Zaur", "Treugulov", 800);
-//            Employee emp2 = new Employee("Elena", "Smirnova", 1000);
+//            Employee emp2 = new Employee("Elena", "Smirnova", 1500);
+//            Employee emp3 = new Employee("Anton", "Sidirov", 1200);
 //
 //            department.addEmployeeToDepartment(emp1);
 //            department.addEmployeeToDepartment(emp2);
+//            department.addEmployeeToDepartment(emp3);
 //
 //            session.beginTransaction();
 //
@@ -33,17 +35,17 @@ public class Test1 {
 //
 //            session.getTransaction().commit();
 //**************************************************
-//            session = factory.getCurrentSession();
-//
-//            session.beginTransaction();
-//
-//            Department department = session.get(Department.class, 1);
-//            System.out.println(department);
-//            System.out.println(department.getEmployees());
-//
-//            session.getTransaction().commit();
-//
-//            System.out.println("Done!");
+            session = factory.getCurrentSession();
+
+            session.beginTransaction();
+
+            Department department = session.get(Department.class, 5);
+            System.out.println(department);
+            System.out.println(department.getEmployees());
+
+            session.getTransaction().commit();
+
+            System.out.println("Done!");
 //**************************************************
 //            session = factory.getCurrentSession();
 //
