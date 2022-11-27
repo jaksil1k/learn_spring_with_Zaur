@@ -1,4 +1,4 @@
-package com.example.learn_spring_with_zaur.hibernate_test_2.entity;
+package com.example.learn_spring_with_zaur.hibernate_one_to_one.entity;
 
 import javax.persistence.*;
 

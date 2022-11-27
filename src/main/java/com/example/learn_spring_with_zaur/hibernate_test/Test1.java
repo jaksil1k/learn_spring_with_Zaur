@@ -1,12 +1,11 @@
-package com.example.learn_spring_with_zaur.hibernate_test.entity;
+package com.example.learn_spring_with_zaur.hibernate_test;
 
+import com.example.learn_spring_with_zaur.hibernate_test.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.List;
-
-public class Test3 {
+public class Test1 {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -16,19 +15,9 @@ public class Test3 {
 
         try {
             Session session = factory.getCurrentSession();
+            Employee emp = new Employee("Zhaksylyk", "Omirbekov", "junior java", 250);
             session.beginTransaction();
-
-//            List emps = session.createQuery("from Employee")
-//                            .getResultList();
-
-            List emps = session.createQuery("from Employee " +
-                            "where name = 'Elena' and salary>650")
-                    .getResultList();
-
-            for (Object e : emps){
-                System.out.println(e);
-            }
-
+            session.save(emp);
             session.getTransaction().commit();
         }
         finally {

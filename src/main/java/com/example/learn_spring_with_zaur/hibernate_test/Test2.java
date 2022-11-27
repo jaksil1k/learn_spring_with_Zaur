@@ -1,10 +1,11 @@
-package com.example.learn_spring_with_zaur.hibernate_test.entity;
+package com.example.learn_spring_with_zaur.hibernate_test;
 
+import com.example.learn_spring_with_zaur.hibernate_test.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Test5 {
+public class Test2 {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -14,13 +15,18 @@ public class Test5 {
 
         try {
             Session session = factory.getCurrentSession();
+            Employee emp = new Employee("Elena", "Petrova", "sales", 800);
             session.beginTransaction();
-//            Employee emp = session.get(Employee.class, 1);
-//            session.delete(emp);
+            session.save(emp);
+//            session.getTransaction().commit();
 
-            session.createQuery("delete Employee where name='Elena'").executeUpdate();
-
+            int myId = emp.getId();
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+            Employee employee = session.get(Employee.class, myId);
             session.getTransaction().commit();
+            System.out.println(employee) ;
+
         }
         finally {
             factory.close();
